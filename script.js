@@ -54,7 +54,22 @@ const loadCategoryVideos = (id) =>{
 
 const displayVideos = (videos) => {
   const videoContainer = document.getElementById("videos");
-  videoContainer.innerHTML = ""
+  videoContainer.innerHTML = "";
+
+  if(videos.length == 0 ){
+        videoContainer.classList.remove('grid')
+         videoContainer.innerHTML = `
+          <div class="min-h-[300px]  flex flex-col gap-5 justify-center items-center">
+                <img src = "./assets/Icon.png">
+                <h2 class="text-center text-xl">
+                    No Container Here In Category 
+                </h2>
+          </div>
+         `;
+         return;
+  }else{
+    videoContainer.classList.add('grid')
+  }
   videos.forEach((video) => {
     console.log(video);
     const card = document.createElement("div");
